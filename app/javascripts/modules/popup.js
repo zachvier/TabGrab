@@ -39,20 +39,20 @@ var popup = {
 
   },
 
-  disable: function(disableFor) {
-    browser.pageAction.setIcon('disabled');
-    this.closePopup();
-  },
-
-  enable: function() {
-    browser.pageAction.setIcon('enabled');
-    this.closePopup();
-  },
-
   setUrlDetection: function(option) {
     var self = this;
 
     browser.storage.set('urlDetection', option);
+
+    // Update UI immediately
+    var allLinks = document.querySelectorAll("#settings-url-types a");
+    allLinks.forEach(function(link) {
+        if (link.getAttribute('data-url-type') === option) {
+            link.classList.add('enabled');
+        } else {
+            link.classList.remove('enabled');
+        }
+    });
 
     switch(option) {
       case 'allUrls':
@@ -62,6 +62,16 @@ var popup = {
       case 'noUrls':
         self.disable();
     }
+  },
+
+  disable: function(disableFor) {
+    browser.pageAction.setIcon('disabled');
+    setTimeout(() => { this.closePopup(); }, 150); // Small delay to show selection
+  },
+
+  enable: function() {
+    browser.pageAction.setIcon('enabled');
+    setTimeout(() => { this.closePopup(); }, 150); // Small delay to show selection
   },
 
   closePopup: function() {

@@ -21,3 +21,12 @@ chrome.webNavigation.onBeforeNavigate.addListener(function(navDetails) {
 chrome.webNavigation.onCommitted.addListener(function(navDetails) {
   browser.didNavigate(navDetails);
 }, { url: [ { hostSuffix: 'zendesk.com' } ] });
+
+// Sync icon state across tabs when settings change
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+  if (namespace === 'local' && changes.urlDetection) {
+    var newValue = changes.urlDetection.newValue;
+    var iconState = (newValue !== 'noUrls') ? 'enabled' : 'disabled';
+    browser.pageAction.setIcon(iconState);
+  }
+});
