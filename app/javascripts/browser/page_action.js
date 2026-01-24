@@ -12,7 +12,13 @@ var pageAction = {
   },
 
   setIcon: function(option) {
-    var icon = '/images/icons/icon38-' + option + '.png';
+    var icon;
+    if (option === 'enabled') {
+        icon = '/images/icons/QuickTab.png';
+    } else {
+        icon = '/images/icons/icon38-' + option + '.png';
+    }
+
     // For V3 action.setIcon
     var setIconAPI = chrome.action ? chrome.action.setIcon : (chrome.pageAction ? chrome.pageAction.setIcon : null);
 
