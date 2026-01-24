@@ -4,38 +4,61 @@ var pageAction = {
   show: function(tabId) {
     if (chrome.action) {
         // V3: No explicit 'show' needed usually for "action", 
-        // but if we used declarativeContent it would be different.
-        // For simple migration, we assume it's enabled.
     } else if (chrome.pageAction) {
         chrome.pageAction.show(tabId);
     }
   },
 
   setIcon: function(option) {
-    var icon;
+    var iconPath, badgeText, badgeColor, title;
     if (option === 'enabled') {
-        icon = 'images/icons/icon38-enabled.png';
+        iconPath = {
+            "16": "images/icons/icon16.png",
+            "19": "images/icons/icon19.png",
+            "32": "images/icons/icon32.png",
+            "38": "images/icons/icon38-enabled.png",
+            "48": "images/icons/icon48.png",
+            "128": "images/icons/icon128.png"
+        };
+        badgeText = "";
+        badgeColor = "#4688F1";
+        title = "QuickTab (Enabled)";
     } else {
-        icon = 'images/icons/icon38-' + option + '.png';
+        iconPath = {
+            "16": "images/icons/icon16-disabled.png",
+            "19": "images/icons/icon19-disabled.png",
+            "32": "images/icons/icon32-disabled.png",
+            "38": "images/icons/icon38-disabled.png",
+            "48": "images/icons/icon38-disabled.png",
+            "128": "images/icons/icon38-disabled.png"
+        };
+        badgeText = "OFF";
+        badgeColor = "#999999";
+        title = "QuickTab (Disabled)";
     }
 
     // For V3 action.setIcon
-    var setIconAPI = chrome.action ? chrome.action.setIcon : (chrome.pageAction ? chrome.pageAction.setIcon : null);
+    var actionAPI = chrome.action || chrome.pageAction;
+    if (!actionAPI) return;
 
-    if (!setIconAPI) return;
-
-    // Set the global icon (Manifest V3)
-    // This changes the default icon for all tabs and new tabs
+    // Set global default state
     try {
-        setIconAPI({ path: icon }); 
-    } catch (e) {
-        // Fallback or ignore if running in a context where global set isn't allowed (rare)
-    }
+        if (actionAPI.setIcon) actionAPI.setIcon({ path: iconPath });
+        if (actionAPI.setBadgeText) actionAPI.setBadgeText({ text: badgeText });
+        if (actionAPI.setBadgeBackgroundColor) actionAPI.setBadgeBackgroundColor({ color: badgeColor });
+        if (actionAPI.setTitle) actionAPI.setTitle({ title: title });
+    } catch (e) {}
 
-    // Also update existing matching tabs to ensure they reflect the change immediately
-    chrome.tabs.query({ url: '*://*.zendesk.com/agent/*' }, function(openTabs) {
-      openTabs.forEach(function(tab) {
-        setIconAPI({ tabId: tab.id, path: icon });
+    // Update ALL currently open tabs to reflect the new setting
+    chrome.tabs.query({}, function(allTabs) {
+      allTabs.forEach(function(tab) {
+        try {
+            if (actionAPI.setIcon) actionAPI.setIcon({ tabId: tab.id, path: iconPath });
+            if (actionAPI.setBadgeText) actionAPI.setBadgeText({ tabId: tab.id, text: badgeText });
+            if (actionAPI.setTitle) actionAPI.setTitle({ tabId: tab.id, title: title });
+        } catch (e) {
+            // Tab might be restricted (e.g. chrome://)
+        }
       });
     });
   }
