@@ -31,13 +31,7 @@ var popup = {
         });
     });
 
-    // Help/Welcome Link
-    var welcomeLink = document.getElementById("settings-help-welcome");
-    if (welcomeLink) {
-        welcomeLink.addEventListener("click", function() {
-            browser.openWelcome();
-        });
-    }
+
   },
 
   disable: function(disableFor) {

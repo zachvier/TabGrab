@@ -37,11 +37,6 @@ var browser = {
       });
     });
 
-    // Check if this was first time install
-    if (details.reason === 'install') {
-      self.openWelcome();
-    }
-
     // Check if the settings we expect exist and set them if not
     self.storage.sanitize();
   },
@@ -75,12 +70,6 @@ var browser = {
     this.tabs.executeScript(lotusTabId, function(msgJson) {
         window.postMessage(msgJson, '*');
     }, [JSON.stringify(message)]);
-  },
-
-  openWelcome: function() {
-    var welcomeUrl = this.extension.getUrl('welcome.html');
-
-    this.tabs.create(welcomeUrl);
   }
 
 };
