@@ -14,7 +14,8 @@ Zendesk QuickTab for Chrome makes tab management a little easier by monitoring w
 
 ## Modernization Status (2026)
 This project is a modernized fork of the original (deprecated in 2020).
-*   **Manifest V3:** Fully compatible with modern Chrome security standards.
+*   **v1.1.0 (Current):** Added visible mode indicators (radio buttons), optimized icon set, and implemented robust error handling for tab race conditions.
+*   **v1.0.3:** Fully compatible with modern Chrome Manifest V3 security standards.
 *   **Privacy First:** No external tracking. Runs entirely locally in your browser.
 *   **Modern Tech:** Built with Webpack 5 and Vanilla JS (jQuery removed).
 
@@ -23,7 +24,7 @@ This project is a modernized fork of the original (deprecated in 2020).
 ### Quick Start (No Coding Required)
 If you just want to use the extension without building it yourself:
 1.  Go to the [Releases](https://github.com/zachvier/QuickTab/releases) page.
-2.  Download the `QuickTab-v1.0.3.zip` file.
+2.  Download the `QuickTab-v1.1.0.zip` file.
 3.  Unzip the file on your computer.
 4.  Open Chrome and go to `chrome://extensions`.
 5.  Enable **Developer Mode** (toggle in the top right corner).
@@ -59,7 +60,7 @@ If you just want to use the extension without building it yourself:
 *   **Build:** `npm run build`
 
 ## To Do
-*   [ ] Add a visible indicator in the popup UI to show which mode is currently active (e.g., a switch or radio button indicator).
+*   [x] Add a visible indicator in the popup UI to show which mode is currently active (Completed in v1.1.0).
 
 ## Contact
 Maintainer: zachvier
