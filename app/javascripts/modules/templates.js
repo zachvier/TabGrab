@@ -3,12 +3,10 @@ var Handlebars = require('handlebars/runtime');
 
 // Require templates directly so webpack can bundle them
 var popupTemplate = require('../../templates/popup.handlebars');
-var welcomeTemplate = require('../../templates/welcome.handlebars');
 
 var templates = {
   _templates: {
-    'popup': popupTemplate,
-    'welcome': welcomeTemplate
+    'popup': popupTemplate
   },
 
   init: function() {
