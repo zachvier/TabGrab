@@ -17,17 +17,16 @@ body {
 }
 
 h1 {
-  background: transparent url('../images/icons/icon38-disabled.png') no-repeat 0 center;
-  background-size: 18px 18px;
+  background: none; // Remove icon
   font-size: 16px;
   font-weight: 600;
-  padding: 15px 0 15px 28px;
+  padding: 15px 0 15px 0; // Removed left padding
   margin: 0 15px;
   color: $text-color;
 }
 
 h1.enabled {
-  background-image: url('../images/icons/QuickTab.png');
+  background-image: none; // Remove icon
 }
 
 h2 {
