@@ -14,9 +14,9 @@ var pageAction = {
   setIcon: function(option) {
     var icon;
     if (option === 'enabled') {
-        icon = '/images/icons/QuickTab.png';
+        icon = 'images/icons/icon38-enabled.png';
     } else {
-        icon = '/images/icons/icon38-' + option + '.png';
+        icon = 'images/icons/icon38-' + option + '.png';
     }
 
     // For V3 action.setIcon
@@ -24,6 +24,15 @@ var pageAction = {
 
     if (!setIconAPI) return;
 
+    // Set the global icon (Manifest V3)
+    // This changes the default icon for all tabs and new tabs
+    try {
+        setIconAPI({ path: icon }); 
+    } catch (e) {
+        // Fallback or ignore if running in a context where global set isn't allowed (rare)
+    }
+
+    // Also update existing matching tabs to ensure they reflect the change immediately
     chrome.tabs.query({ url: '*://*.zendesk.com/agent/*' }, function(openTabs) {
       openTabs.forEach(function(tab) {
         setIconAPI({ tabId: tab.id, path: icon });

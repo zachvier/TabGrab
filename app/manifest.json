@@ -9,8 +9,8 @@
   },
   "action": {
     "default_icon": {
-      "19": "images/icons/QuickTab.png",
-      "38": "images/icons/QuickTab.png"
+      "19": "images/icons/icon19.png",
+      "38": "images/icons/icon38-enabled.png"
     },
     "default_title": "Zendesk QuickTab",
     "default_popup": "popup.html"
@@ -25,8 +25,8 @@
     "*://*.zendesk.com/*"
   ],
   "icons": {
-    "16": "images/icons/QuickTab.png",
-    "48": "images/icons/QuickTab.png",
-    "128": "images/icons/QuickTab.png"
+    "16": "images/icons/icon16.png",
+    "48": "images/icons/icon48.png",
+    "128": "images/icons/icon128.png"
   }
 }

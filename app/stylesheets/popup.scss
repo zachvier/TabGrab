@@ -46,51 +46,113 @@ h2 {
 
 #settings-url-types {
   margin-bottom: 15px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: 0 15px;
+    margin: 0;
+    transition: background-color 0.2s;
+  }
+
+  li:hover {
+    background-color: $hover-bg;
+  }
+
+  li a {
+    padding: 8px 0 8px 24px;
+    display: block;
+    text-decoration: none;
+    color: $text-color;
+    position: relative;
+
+    // Radio Button Outer Circle
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      border: 2px solid $text-muted;
+      border-radius: 50%;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+  }
+
+  li a:hover,
+  li a:focus {
+    color: #fff;
+    outline: 0;
+
+    &::before {
+      border-color: lighten($accent-color, 10%);
+    }
+  }
+
+  li a.disabled {
+    color: $text-muted;
+    opacity: 0.7;
+  }
+
+  li a.enabled {
+    font-weight: bold;
+    background: none;
+
+    // Checked State Outer
+    &::before {
+      border-color: $accent-color;
+    }
+
+    // Checked State Inner Dot
+    &::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background-color: $accent-color;
+      border-radius: 50%;
+    }
+  }
 }
 
 #settings-help {
   padding-bottom: 10px;
-}
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-li {
-  padding: 0 15px;
-  margin: 0;
-  transition: background-color 0.2s;
-}
+  li {
+    padding: 0 15px;
+    margin: 0;
+  }
 
-li:hover {
-  background-color: $hover-bg;
-}
+  li:hover {
+    background-color: $hover-bg;
+  }
 
-li a {
-  padding: 8px 0;
-  display: block;
-  text-decoration: none;
-  color: $text-color;
-}
+  li a {
+    padding: 8px 0;
+    display: block;
+    text-decoration: none;
+    color: $text-color;
+  }
 
-li a:hover,
-li a:focus {
-  color: #fff;
-  outline: 0;
-}
-
-li a.disabled {
-  color: $text-muted;
-  opacity: 0.7;
-}
-
-li a.enabled {
-  font-weight: bold;
-  // Use a CSS-only checkmark or invert the image if needed. 
-  // For now, let's keep the image but invert it if it's dark.
-  background: transparent url('../images/icons/checkmark.png') no-repeat right center;
-  background-size: 16px;
-  filter: invert(1); // Invert checkmark to white
+  li a:hover,
+  li a:focus {
+    color: #fff;
+    outline: 0;
+  }
 }

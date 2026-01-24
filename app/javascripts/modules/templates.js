@@ -38,11 +38,10 @@ var templates = {
     });
 
     // ifSettingEnabled Helper
-    Handlebars.registerHelper('enabledSetting', function(settingName, expectedSettingValue) {
-      var settingEnabled = '',
-          settingValue   = browser.storage.get(settingName);
+    Handlebars.registerHelper('enabledSetting', function(currentValue, expectedValue) {
+      var settingEnabled = '';
 
-      if (expectedSettingValue == settingValue) {
+      if (currentValue == expectedValue) {
         settingEnabled = 'enabled';
       }
 
