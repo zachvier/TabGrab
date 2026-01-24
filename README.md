@@ -1,7 +1,7 @@
 # Zendesk QuickTab (Modernized)
 
 > [!CAUTION]
-> **Pre-release & Testing:** This project is currently in a pre-release state and is undergoing active development. It is intended for testing purposes and may not be stable enough for production environments.
+> **Pre-release & Testing:** This project is currently in a pre-release state and is undergoing active development. It is intended for testing purposes at this time.
 
 **Well behaved browser tabs for Zendesk agents**
 
