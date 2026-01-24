@@ -1,5 +1,8 @@
 # Zendesk QuickTab (Modernized)
 
+> [!CAUTION]
+> **Pre-release & Testing:** This project is currently in a pre-release state and is undergoing active development. It is intended for testing purposes and may not be stable enough for production environments.
+
 **Well behaved browser tabs for Zendesk agents**
 
 Zendesk QuickTab for Chrome makes tab management a little easier by monitoring when a new browser tab is navigating to a Zendesk Support `/agent` link. QuickTab checks if you have an agent browser tab already open. If you do, QuickTab opens the link on the existing agent tab and closes the new one. This keeps the number of Zendesk Support browser tabs down to just one.
