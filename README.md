@@ -15,11 +15,21 @@ This project is a modernized fork of the original (deprecated in 2020).
 *   **Privacy First:** No external tracking. Runs entirely locally in your browser.
 *   **Modern Tech:** Built with Webpack 5 and Vanilla JS (jQuery removed).
 
-## Installation (Developer Mode)
+## Installation
 
+### Quick Start (No Coding Required)
+If you just want to use the extension without building it yourself:
+1.  Go to the [Releases](https://github.com/zachvier/QuickTab/releases) page.
+2.  Download the `QuickTab-v1.0.0.zip` file.
+3.  Unzip the file on your computer.
+4.  Open Chrome and go to `chrome://extensions`.
+5.  Enable **Developer Mode** (toggle in the top right corner).
+6.  Click **Load unpacked** and select the unzipped folder.
+
+### For Developers (Build from Source)
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/YOUR_USERNAME/QuickTab.git
+    git clone https://github.com/zachvier/QuickTab.git
     cd QuickTab
     ```
 
