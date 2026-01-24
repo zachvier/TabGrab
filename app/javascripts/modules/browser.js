@@ -8,17 +8,17 @@ var browser = {
   storage:    require('../browser/storage.js'),
   extension:  require('../browser/extension.js'),
 
-  addPageAction: function(tabId) {
-    var detectionMode = this.storage.get('urlDetection'),
+  addPageAction: async function(tabId) {
+    var detectionMode = await this.storage.get('urlDetection'),
         iconState     = (detectionMode !== 'noUrls') ? 'enabled' : 'disabled';
 
     this.pageAction.show(tabId);
     this.pageAction.setIcon(iconState);
   },
 
-  didNavigate: function(navDetails) {
+  didNavigate: async function(navDetails) {
     var tabDetails       = { id: navDetails.tabId, url: navDetails.url },
-        detectionMode    = this.storage.get('urlDetection'),
+        detectionMode    = await this.storage.get('urlDetection'),
         zdUrlMatches     = urlMatch.extractMatches(navDetails.url, detectionMode);
 
     if ((detectionMode !== 'noUrls') && zdUrlMatches) {
@@ -69,10 +69,12 @@ var browser = {
   },
 
   updateLotusRoute: function(lotusTabId, route) {
-    var message       = { "target": "route", "memo": { "hash": route } },
-        codeToExecute = "window.postMessage('" + JSON.stringify(message) + "', '*')";
-
-    this.tabs.executeScript(lotusTabId, codeToExecute);
+    var message = { "target": "route", "memo": { "hash": route } };
+    
+    // Updated for V3: Pass function and args
+    this.tabs.executeScript(lotusTabId, function(msgJson) {
+        window.postMessage(msgJson, '*');
+    }, [JSON.stringify(message)]);
   },
 
   openWelcome: function() {

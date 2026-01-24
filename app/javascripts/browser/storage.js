@@ -1,23 +1,34 @@
 var storage = {
   get: function(key) {
-    return localStorage.getItem(key);
+    return new Promise((resolve) => {
+        chrome.storage.local.get([key], function(result) {
+            resolve(result[key]);
+        });
+    });
   },
 
   set: function(key, value) {
-    if (value) {
-      localStorage.setItem(key, value);
-    } else {
-      localStorage.removeItem(key);
-    }
+    return new Promise((resolve) => {
+        if (value) {
+            var obj = {};
+            obj[key] = value;
+            chrome.storage.local.set(obj, resolve);
+        } else {
+            chrome.storage.local.remove(key, resolve);
+        }
+    });
   },
 
   drop: function() {
-    localStorage.clear();
+    return new Promise((resolve) => {
+        chrome.storage.local.clear(resolve);
+    });
   },
 
-  sanitize: function() {
-    if (!this.get('urlDetection')) {
-      this.set('urlDetection', 'allUrls');
+  sanitize: async function() {
+    var val = await this.get('urlDetection');
+    if (!val) {
+      await this.set('urlDetection', 'allUrls');
     }
   }
 };

@@ -1,5 +1,5 @@
 var popup = require('./modules/popup.js');
 
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
   popup.init();
 });

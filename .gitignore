@@ -1,6 +1,7 @@
 .sass-cache
 build
 build-release
+dist
 node_modules
 npm-debug.log
 .DS_Store

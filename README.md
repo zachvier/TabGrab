@@ -1,16 +1,49 @@
-### Summary
-Well behaved browser tabs for Zendesk agents
+# Zendesk QuickTab (Modernized)
 
-Zendesk QuickTab for Chrome makes tab management a little easier by monitoring when a new browser tab is navigating to a Zendesk Support /agent link. Zendesk QuickTab checks if you have an agent browser tab already open. If you do, QuickTab opens the link on the existing agent tab. This keeps the number of Zendesk Support browser tabs down to just one.
+**Well behaved browser tabs for Zendesk agents**
 
-QuickTab begins working as soon as installed. No set up needed!
+Zendesk QuickTab for Chrome makes tab management a little easier by monitoring when a new browser tab is navigating to a Zendesk Support `/agent` link. QuickTab checks if you have an agent browser tab already open. If you do, QuickTab opens the link on the existing agent tab and closes the new one. This keeps the number of Zendesk Support browser tabs down to just one.
 
-### What permissions does QuickTab need?
-The extension will request permission to read and change your data on all zendesk.com sites. It needs this permission in order to keep your browser tabs in check.
+## Features
+*   **Automatic Tab Management:** Keeps your browser clutter-free by ensuring only one Zendesk Agent tab is open.
+*   **Focus Switching:** Instantly switches focus to your existing agent tab when you click a ticket link.
+*   **Configurable:** Choose to manage all URLs, only ticket URLs, or disable temporarily via the popup.
 
-### UPDATE 2020
-* This extension is not maintained or supported
-* Because of changes on Google's Web Store and increased restrictions, this extension was removed from it
-* However, you can still install this extension locally by:
-    * Unzipping the .zip in ./releases
-    * Following the instructions at https://webkul.com/blog/how-to-install-the-unpacked-extension-in-chrome/
+## Modernization Status (2026)
+This project is a modernized fork of the original (deprecated in 2020).
+*   **Manifest V3:** Fully compatible with modern Chrome security standards.
+*   **Privacy First:** No external tracking. Runs entirely locally in your browser.
+*   **Modern Tech:** Built with Webpack 5 and Vanilla JS (jQuery removed).
+
+## Installation (Developer Mode)
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/QuickTab.git
+    cd QuickTab
+    ```
+
+2.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Build the Project:**
+    ```bash
+    npm run build
+    ```
+    This generates a `dist/` folder containing the extension.
+
+4.  **Load into Chrome:**
+    *   Open Chrome and go to `chrome://extensions`.
+    *   Enable **Developer Mode** (top right toggle).
+    *   Click **Load unpacked**.
+    *   Select the `dist` folder from this project.
+
+## Development
+
+*   **Watch Mode:** `npm run dev` (Rebuilds automatically on file changes)
+*   **Build:** `npm run build`
+
+## License
+Apache License 2.0

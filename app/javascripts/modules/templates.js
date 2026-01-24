@@ -1,24 +1,37 @@
 var browser = require('./browser.js');
+var Handlebars = require('handlebars/runtime');
+
+// Require templates directly so webpack can bundle them
+var popupTemplate = require('../../templates/popup.handlebars');
+var welcomeTemplate = require('../../templates/welcome.handlebars');
 
 var templates = {
+  _templates: {
+    'popup': popupTemplate,
+    'welcome': welcomeTemplate
+  },
+
   init: function() {
     this._registerHandlebarsHelpers();
   },
 
-  render: function(template, context) {
-    return Handlebars.templates[template](context);
+  render: function(templateName, context) {
+    if (this._templates[templateName]) {
+        return this._templates[templateName](context);
+    }
+    console.error("Template not found:", templateName);
+    return "";
   },
 
-  show: function(template, context, $element) {
-    var output = this.render(template, context);
-
-    $element.prop("id", template).html(output);
+  show: function(templateName, context, element) {
+    var output = this.render(templateName, context);
+    if (element) {
+        element.id = templateName;
+        element.innerHTML = output;
+    }
   },
 
   _registerHandlebarsHelpers: function() {
-    // Partial loading
-    Handlebars.partials = Handlebars.templates;
-
     // i18n Helper
     Handlebars.registerHelper('t', function(text) {
       return new Handlebars.SafeString(

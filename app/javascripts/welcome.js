@@ -1,5 +1,6 @@
+require('../stylesheets/welcome.scss');
 var templates = require('./modules/templates.js');
 
-$(function() {
-  templates.show('welcome', null, $("body"));
+document.addEventListener('DOMContentLoaded', function() {
+  templates.show('welcome', null, document.body);
 });
