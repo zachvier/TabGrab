@@ -27,6 +27,13 @@ var browser = {
     }
   },
 
+  restoreState: async function() {
+    var detectionMode = await this.storage.get('urlDetection'),
+        iconState     = (detectionMode !== 'noUrls') ? 'enabled' : 'disabled';
+
+    this.pageAction.setIcon(iconState);
+  },
+
   didInstall: function(details) {
     var self = this;
 

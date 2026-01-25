@@ -11,6 +11,11 @@ chrome.runtime.onInstalled.addListener(function(details) {
   browser.didInstall(details);
 });
 
+// Restore icon state on browser startup
+chrome.runtime.onStartup.addListener(function() {
+  browser.restoreState();
+});
+
 // Listen for navigation events the moment they occur, for zendesk.com URLs
 chrome.webNavigation.onBeforeNavigate.addListener(function(navDetails) {
   browser.didNavigate(navDetails);
