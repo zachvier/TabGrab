@@ -1,8 +1,5 @@
 # Zendesk QuickTab (Modernized)
 
-> [!CAUTION]
-> **Pre-release & Testing:** This project is currently in a pre-release state and is undergoing active development. It is intended for testing purposes at this time.
-
 **Well behaved browser tabs for Zendesk agents**
 
 Zendesk QuickTab for Chrome makes tab management a little easier by monitoring when a new browser tab is navigating to a Zendesk Support `/agent` link. QuickTab checks if you have an agent browser tab already open. If you do, QuickTab opens the link on the existing agent tab and closes the new one. This keeps the number of Zendesk Support browser tabs down to just one.
@@ -14,8 +11,8 @@ Zendesk QuickTab for Chrome makes tab management a little easier by monitoring w
 
 ## Modernization Status (2026)
 This project is a modernized fork of the original (deprecated in 2020).
-*   **v1.1.2 (Current):** Fixed a bug where the disabled icon state would reset to "enabled" after restarting the browser.
-*   **v1.1.1:** Fixed icon synchronization issues and added high-DPI support for Retina displays.
+*   **v1.2.0 (Current):** Added a new welcome screen to guide users upon installation.
+*   **v1.1.2:** Fixed a bug where the disabled icon state would reset to "enabled" after restarting the browser.
 *   **Privacy First:** No external tracking. Runs entirely locally in your browser.
 *   **Modern Tech:** Built with Webpack 5 and Vanilla JS (jQuery removed).
 
@@ -24,7 +21,7 @@ This project is a modernized fork of the original (deprecated in 2020).
 ### Quick Start (No Coding Required)
 If you just want to use the extension without building it yourself:
 1.  Go to the [Releases](https://github.com/zachvier/QuickTab/releases) page.
-2.  Download the `QuickTab-v1.1.2.zip` file.
+2.  Download the latest stable version (`.zip` file).
 3.  Unzip the file on your computer.
 4.  Open Chrome and go to `chrome://extensions`.
 5.  Enable **Developer Mode** (toggle in the top right corner).

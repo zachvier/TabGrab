@@ -1,7 +1,7 @@
 {
   "name": "quicktab",
-  "version": "1.1.2",
-  "description": "Well behaved browser tabs for Zendesk agents",
+  "version": "1.2.0",
+  "description": "Zendesk Quicktab Extension",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
