@@ -21,7 +21,7 @@ This project is a modernized fork of the original (deprecated in 2020).
 ### Quick Start (No Coding Required)
 If you just want to use the extension without building it yourself:
 1.  Go to the [Releases](https://github.com/zachvier/QuickTab/releases) page.
-2.  Download the latest stable version (`.zip` file).
+2.  Download the latest version (`.zip` file).
 3.  Unzip the file on your computer.
 4.  Open Chrome and go to `chrome://extensions`.
 5.  Enable **Developer Mode** (toggle in the top right corner).
