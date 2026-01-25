@@ -55,17 +55,17 @@
   },
 
   "txt_welcome_header_hook": {
-    "message": "Click a Zendesk agent link from anywhere, and this handy little extension will hunt for any already open Zendesk tabs, opening the link their instead",
+    "message": "Click a Zendesk agent link from anywhere, and QuickTab will automatically find your existing Zendesk tab and open the link there instead.",
     "description": ""
   },
 
   "txt_welcome_header_what_do": {
-    "message": "What does this do again?",
+    "message": "How does it work?",
     "description": ""
   },
 
   "txt_welcome_body_what_do": {
-    "message": "So you have a browser tab with the Zendesk agent interface already opened. When you click a link - a ticket or user link for example - this extension will ensure the link is opened in that same browser tab.",
+    "message": "If you already have Zendesk open, clicking a ticket or user link will focus that existing tab instead of opening a clutter of new ones.",
     "description": ""
   },
 
@@ -75,7 +75,7 @@
   },
 
   "txt_welcome_body_new_browser_tab": {
-    "message": "You can disable the extension temporarily. Just go to your agent interface, and in your URL bar you should see an icon that looks like <img src='./images/icons/icon38-enabled.png' /> or <img src='./images/icons/icon38-disabled.png' />",
+    "message": "Yes. You can temporarily disable QuickTab via the extension popup. <strong>Tip:</strong> Pin QuickTab to your browser toolbar for easy access. The icon shows your status: <img src='./images/icons/icon38-enabled.png' /> (On) or <img src='./images/icons/icon38-disabled.png' /> (Off).",
     "description": ""
   },
 

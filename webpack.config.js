@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     popup: './app/javascripts/popup.js',
     tabWatcher: './app/javascripts/tabWatcher.js', // Background service worker
+    welcome: './app/javascripts/welcome.js',
   },
   output: {
     filename: '[name].js',
@@ -35,6 +36,7 @@ module.exports = {
       patterns: [
         { from: "app/manifest.json", to: "manifest.json" },
         { from: "app/popup.html", to: "popup.html" },
+        { from: "app/welcome.html", to: "welcome.html" },
         { from: "app/images", to: "images" },
         { from: "app/_locales", to: "_locales" },
       ],

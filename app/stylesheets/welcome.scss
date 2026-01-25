@@ -1,0 +1,112 @@
+$bg-color: #1f2b36; // Zendesk-ish Dark
+$card-bg: #2c3e50;
+$text-color: #ecf0f1;
+$text-muted: #bdc3c7;
+$accent-color: #3498db; // Blue
+$accent-hover: #2980b9;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: $bg-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px 20px;
+  padding: 40px;
+  background-color: $card-bg;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 20px;
+
+  .logo {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    color: $accent-color;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin: 10px 0;
+  }
+
+  .lead {
+    font-size: 18px;
+    color: $text-muted;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+section {
+  margin-bottom: 30px;
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  p {
+    color: $text-muted;
+    margin-top: 0;
+    
+    img {
+      vertical-align: middle;
+      margin: 0 5px;
+    }
+  }
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.actions {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-primary {
+  background-color: $accent-color;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 600;
+
+  &:hover {
+    background-color: $accent-hover;
+  }
+}

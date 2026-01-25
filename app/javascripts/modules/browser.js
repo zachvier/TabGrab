@@ -37,6 +37,11 @@ var browser = {
   didInstall: function(details) {
     var self = this;
 
+    // Open welcome page on fresh install
+    if (details.reason === 'install') {
+      self.tabs.create("welcome.html");
+    }
+
     // Find any tabs where the agent interface is open
     self.tabs.query('*://*.zendesk.com/agent/*', function(openTabs) {
       openTabs.forEach(function(tab) {
