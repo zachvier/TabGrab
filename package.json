@@ -9,9 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/zendesklabs/QuickTab.git"
+    "url": "https://github.com/zachvier/QuickTab.git"
   },
   "author": "Zendesk",
+  "contributors": [
+    "zachvier <zachvierdev@gmail.com>"
+  ],
   "license": "Apache-2.0",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",

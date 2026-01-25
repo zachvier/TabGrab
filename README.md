@@ -58,7 +58,7 @@ If you just want to use the extension without building it yourself:
 
 ## Contact
 Maintainer: zachvier
-Email: centaur-umpires-37@icloud.com
+Email: zachvierdev@gmail.com
 
 ## License
 Apache License 2.0
