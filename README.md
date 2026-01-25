@@ -56,9 +56,6 @@ If you just want to use the extension without building it yourself:
 *   **Watch Mode:** `npm run dev` (Rebuilds automatically on file changes)
 *   **Build:** `npm run build`
 
-## To Do
-*   [x] Add a visible indicator in the popup UI to show which mode is currently active (Completed in v1.1.0).
-
 ## Contact
 Maintainer: zachvier
 Email: centaur-umpires-37@icloud.com
