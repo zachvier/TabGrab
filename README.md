@@ -29,7 +29,7 @@ If you just want to use the extension without building it yourself:
 6.  Click **Load unpacked** and select the unzipped folder.
 
 > [!NOTE]
-> Submitted to Chrome Web Store for review.
+> Submitted to Chrome Web Store for review to make installation easier in the future.
 
 ### For Developers (Build from Source)
 1.  **Clone the repository:**
