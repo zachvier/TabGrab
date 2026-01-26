@@ -28,6 +28,9 @@ If you just want to use the extension without building it yourself:
 5.  Enable **Developer Mode** (toggle in the top right corner).
 6.  Click **Load unpacked** and select the unzipped folder.
 
+> [!NOTE]
+> Submitted to Chrome Web Store for review.
+
 ### For Developers (Build from Source)
 1.  **Clone the repository:**
     ```bash
