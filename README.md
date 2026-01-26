@@ -12,7 +12,6 @@ Zendesk QuickTab for Chrome makes tab management a little easier by monitoring w
 ## Modernization Status (2026)
 This project is a modernized fork of the original (deprecated in 2020).
 *   **v1.2.2 (Current):** Added a new welcome screen to guide users upon installation.
-*   **v1.1.2:** Fixed a bug where the disabled icon state would reset to "enabled" after restarting the browser.
 *   **Privacy First:** No external tracking. Runs entirely locally in your browser.
 *   **Modern Tech:** Built with Webpack 5 and Vanilla JS (jQuery removed).
 
