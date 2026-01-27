@@ -60,9 +60,5 @@ If you just want to use the extension without building it yourself:
 *   **Watch Mode:** `npm run dev` (Rebuilds automatically on file changes)
 *   **Build:** `npm run build`
 
-## Contact
-Maintainer: zachvier
-Email: zachvierdev@gmail.com
-
 ## License
 Apache License 2.0
