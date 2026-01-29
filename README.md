@@ -20,9 +20,9 @@ This project is a modernized fork of the original (deprecated in 2020).
 ## Installation
 
 ### Easiest
-The **Zendesk QuickTab** extension is now available on the Chrome Web Store! 
+The **Zendesk QuickTab** extension is now available on the Chrome Web Store!
 
-[![Available in the Chrome Web Store](https://storage.googleapis.com/chrome-gweb-external-assets/chrome-web-store/v2/getting-started/search-ads/chrome-web-store-badge-2022.png)](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.0-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm)
 
 Simply click the badge above or [follow this link](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm) to add it to your browser.
 
