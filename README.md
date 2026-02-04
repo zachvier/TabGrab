@@ -1,74 +1,55 @@
-# Zendesk QuickTab (Modernized)
+# Zendesk QuickTab
 
-**Well behaved browser tabs for Zendesk agents**
+![Version](https://img.shields.io/chrome-web-store/v/fjoifbimocbapgodjieaecipndjciopm?label=Version&color=blue)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-Available-chrome?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm)
+[![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Zendesk QuickTab for Chrome makes tab management a little easier by monitoring when a new browser tab is navigating to a Zendesk Support `/agent` link. QuickTab checks if you have an agent browser tab already open. If you do, QuickTab opens the link on the existing agent tab and closes the new one. This keeps the number of Zendesk Support browser tabs down to just one.
+**Well-behaved browser tabs for Zendesk agents.**
 
-## Features
-*   **Automatic Tab Management:** Keeps your browser clutter-free by ensuring only one Zendesk Agent tab is open.
-*   **Focus Switching:** Instantly switches focus to your existing agent tab when you click a ticket link.
-*   **Configurable:** Choose to manage all URLs, only ticket URLs, or disable temporarily via the popup.
-
-## Modernization Status (2026)
-This project is a modernized fork of the original (deprecated in 2020).
-*   **v1.2.2 (Current):** Added a new welcome screen to guide users upon installation.
-*   **Privacy First:** No external tracking. Runs entirely locally in your browser.
-*   **Modern Tech:** Built with Webpack 5 and Vanilla JS (jQuery removed).
+QuickTab keeps your browser clutter-free by monitoring your navigation. If you open a new Zendesk ticket link but already have an agent tab open, QuickTab automatically focuses your existing tab and closes the new one.
 
 ![QuickTab Screenshot](app/images/screenshots/screenshot.png)
 
-## Installation
+## ✨ Features
 
-### Easiest
-As of January 27, 2026, the **Zendesk QuickTab** extension is now available on the Chrome Web Store!
+* **Automatic Tab Management:** Ensures only one Zendesk Agent tab is open at a time.
+* **Focus Switching:** Instantly snaps focus to your active agent tab when clicking ticket links.
+* **Privacy First:** Runs entirely locally in your browser with no external tracking.
+* **Modernized:** A complete fork of the original 2020 extension, now built with **Webpack 5** and **Vanilla JS**.
 
-[![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/fjoifbimocbapgodjieaecipndjciopm?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm)
+---
 
-Simply click the badge above or [follow this link](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm) to add it to your browser.
+## 🚀 Installation
 
-### Quick Start (Download, No Coding Required)
-If you just want to use the extension without building it yourself:
-1.  Go to the [Releases](https://github.com/zachvier/QuickTab/releases) page.
-2.  Download the latest version (`.zip` file).
-3.  Unzip the file on your computer.
-4.  Open Chrome and go to `chrome://extensions`.
-5.  Enable **Developer Mode** (toggle in the top right corner).
-6.  Click **Load unpacked** and select the unzipped folder.
+### Option 1: Chrome Web Store (Recommended)
+The easiest way to install. Updates are handled automatically.
 
-### For Developers (Build from Source)
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/zachvier/QuickTab.git
-    cd QuickTab
-    ```
+[![Get it on Chrome Web Store](https://img.shields.io/badge/Get%20it%20on-Chrome%20Web%20Store-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm)
 
-2.  **Install Dependencies:**
-    ```bash
-    npm install
-    ```
+### Option 2: Manual Install (No Building)
+1.  Download the latest `.zip` from the [Releases Page](https://github.com/zachvier/QuickTab/releases).
+2.  Unzip the file.
+3.  Go to `chrome://extensions`, enable **Developer Mode**, and click **Load Unpacked**.
+4.  Select the unzipped folder.
 
-3.  **Build the Project:**
-    ```bash
-    npm run build
-    ```
-    This generates a `dist/` folder containing the extension.
+---
 
-4.  **Load into Chrome:**
-    *   Open Chrome and go to `chrome://extensions`.
-    *   Enable **Developer Mode** (top right toggle).
-    *   Click **Load unpacked**.
-    *   Select the `dist` folder from this project.
+## 🛠️ Development
 
-## Development
+If you want to build the project from source or contribute:
 
-*   **Watch Mode:** `npm run dev` (Rebuilds automatically on file changes)
-*   **Build:** `npm run build`
+```bash
+# 1. Clone the repo
+git clone [https://github.com/zachvier/QuickTab.git](https://github.com/zachvier/QuickTab.git)
 
-### Special Thanks
-<a href="https://github.com/justcarlson">
-  <img src="https://github.com/justcarlson.png" width="40px;" alt="justcarlson"/>
-  <br /><sub><b>justcarlson</b></sub>
-</a>
+# 2. Install dependencies
+npm install
 
-## License
-Apache License 2.0
+# 3. Build (Outputs to /dist)
+npm run build
+
+# 4. Watch mode (Auto-rebuild on change)
+npm run dev
+```
+
+**Maintainer**: [zachvier](https://github.com/zachvier) | **Contributor**: [justcarlson](https://github.com/justcarlson) | Distributed under the Apache License 2.0.
