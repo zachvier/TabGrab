@@ -1,7 +1,7 @@
 {
-  "name": "quicktab",
-  "version": "1.2.2",
-  "description": "Zendesk Quicktab Extension",
+  "name": "zendesk-tabgrab",
+  "version": "2.0.0",
+  "description": "Zendesk TabGrab Extension",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",

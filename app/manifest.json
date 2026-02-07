@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "default_locale": "en",
-  "name": "Zendesk Quicktab",
+  "name": "Zendesk TabGrab",
   "description": "Well behaved browser tabs for Zendesk agents",
-  "version": "1.2.2",
+  "version": "2.0.0",
   "background": {
     "service_worker": "tabWatcher.js"
   },
@@ -12,7 +12,7 @@
       "19": "images/icons/icon19.png",
       "38": "images/icons/icon38-enabled.png"
     },
-    "default_title": "Zendesk QuickTab",
+    "default_title": "Zendesk TabGrab",
     "default_popup": "popup.html"
   },
   "permissions": [

@@ -22,7 +22,7 @@ var pageAction = {
         };
         badgeText = "";
         badgeColor = "#4688F1";
-        title = "QuickTab (Enabled)";
+        title = "Zendesk TabGrab (Enabled)";
     } else {
         iconPath = {
             "16": "images/icons/icon16-disabled.png",
@@ -34,7 +34,7 @@ var pageAction = {
         };
         badgeText = "OFF";
         badgeColor = "#999999";
-        title = "QuickTab (Disabled)";
+        title = "Zendesk TabGrab (Disabled)";
     }
 
     // For V3 action.setIcon

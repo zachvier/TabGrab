@@ -45,7 +45,7 @@
   },
 
   "txt_welcome_header_thank_you": {
-    "message": "Thanks for installing QuickTab",
+    "message": "Thanks for installing Zendesk TabGrab",
     "description": ""
   },
 
@@ -54,30 +54,45 @@
     "description": ""
   },
 
-  "txt_welcome_header_hook": {
-    "message": "Click a Zendesk agent link from anywhere, and QuickTab will automatically find your existing Zendesk tab and open the link there instead.",
-    "description": ""
-  },
+    "txt_welcome_header_hook": {
 
-  "txt_welcome_header_what_do": {
-    "message": "How does it work?",
-    "description": ""
-  },
+      "message": "Click a Zendesk agent link from anywhere, and Zendesk TabGrab will automatically find your existing Zendesk tab and open the link there instead.",
 
-  "txt_welcome_body_what_do": {
-    "message": "If you already have Zendesk open, clicking a ticket or user link will focus that existing tab instead of opening a clutter of new ones.",
-    "description": ""
-  },
+      "description": ""
 
-  "txt_welcome_header_new_browser_tab": {
-    "message": "Can I still open links in a new browser tab?",
-    "description": ""
-  },
+    },
 
-  "txt_welcome_body_new_browser_tab": {
-    "message": "Yes. You can temporarily disable QuickTab via the extension popup. <strong>Tip:</strong> Pin QuickTab to your browser toolbar for easy access. The icon shows your status: <img src='./images/icons/icon38-enabled.png' /> (On) or <img src='./images/icons/icon38-disabled.png' /> (Off).",
-    "description": ""
-  },
+    "txt_welcome_header_what_do": {
+
+      "message": "How does it work?",
+
+      "description": ""
+
+    },
+
+    "txt_welcome_body_what_do": {
+
+      "message": "If you already have Zendesk open, clicking a ticket or user link will focus that existing tab instead of opening a clutter of new ones.",
+
+      "description": ""
+
+    },
+
+    "txt_welcome_header_new_browser_tab": {
+
+      "message": "Can I still open links in a new browser tab?",
+
+      "description": ""
+
+    },
+
+    "txt_welcome_body_new_browser_tab": {
+
+      "message": "Yes. You can temporarily disable Zendesk TabGrab via the extension popup. <strong>Tip:</strong> Pin Zendesk TabGrab to your browser toolbar for easy access. The icon shows your status: <img src='./images/icons/icon38-enabled.png' /> (On) or <img src='./images/icons/icon38-disabled.png' /> (Off).",
+
+      "description": ""
+
+    },
 
   "txt_welcome_header_lose_work": {
     "message": "Would that cause me to lose work?",
