@@ -18,7 +18,10 @@ Zendesk TabGrab keeps your browser clutter-free by monitoring your navigation. I
 
 ## 🚀 Installation
 
-### Option 1: Chrome Web Store (Coming Soon)
+### Option 1: Chrome Web Store
+[![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/fjoifbimocbapgodjieaecipndjciopm?style=for-the-badge&logo=googlechrome&logoColor=white&label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm)
+
+> [!NOTE]
 Zendesk TabGrab v2.0 is currently being prepared for the Chrome Web Store.
 
 ### Option 2: Manual Install (Development)
