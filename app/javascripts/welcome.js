@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (docsBtn) {
     docsBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      chrome.tabs.create({ url: 'https://github.com/zachvier/QuickTab#readme' });
+      chrome.tabs.create({ url: 'https://github.com/zachvier/TabGrab#readme' });
     });
   }
 });

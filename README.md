@@ -34,7 +34,7 @@ If you want to build the project from source or contribute:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/zachvier/QuickTab.git
+git clone https://github.com/zachvier/TabGrab.git
 
 # 2. Install dependencies
 npm install
