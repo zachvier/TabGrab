@@ -25,7 +25,9 @@ var templates = {
     var output = this.render(templateName, context);
     if (element) {
         element.id = templateName;
-        element.innerHTML = output;
+        var doc = new DOMParser().parseFromString(output, 'text/html');
+        while (element.firstChild) element.removeChild(element.firstChild);
+        while (doc.body.firstChild) element.appendChild(doc.body.firstChild);
     }
   },
 

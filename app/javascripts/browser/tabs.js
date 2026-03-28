@@ -1,12 +1,14 @@
+var browser = require('webextension-polyfill');
+
 var tabs = {
   remove: function(tabId) {
-    chrome.tabs.remove(tabId).catch(() => {
+    browser.tabs.remove(tabId).catch(() => {
       // Ignore error if tab is already closed
     });
   },
 
   create: function(url) {
-    chrome.tabs.create({ url: url }).catch((err) => {
+    browser.tabs.create({ url: url }).catch((err) => {
         console.warn("Failed to create tab:", err);
     });
   },
@@ -15,32 +17,37 @@ var tabs = {
     var tabId    = tab.id,
         windowId = tab.windowId;
 
-    chrome.tabs.update(tabId, { active: true, highlighted: true })
+    browser.tabs.update(tabId, { active: true, highlighted: true })
       .catch(() => { /* Ignore if tab gone */ });
-      
-    chrome.windows.update(windowId, { focused: true })
+
+    browser.windows.update(windowId, { focused: true })
       .catch(() => { /* Ignore if window gone */ });
   },
 
   query: function(pattern, callback) {
-    chrome.tabs.query({ url: pattern }, callback);
+    browser.tabs.query({ url: pattern }).then(callback);
   },
 
-  // Updated for V3
   executeScript: function(tabId, codeOrFunction, args) {
       if (typeof codeOrFunction === 'function') {
-           chrome.scripting.executeScript({
-              target: { tabId: tabId },
-              func: codeOrFunction,
-              args: args || []
-           }).catch((err) => {
-               // Tab might be closed or restricted
-               // console.debug("ExecuteScript failed:", err);
-           });
+          if (browser.scripting) {
+              // MV3 (Chrome, Firefox 120+)
+              browser.scripting.executeScript({
+                  target: { tabId: tabId },
+                  func: codeOrFunction,
+                  args: args || []
+              }).catch((err) => {
+                  // Tab might be closed or restricted
+              });
+          } else {
+              // MV2 fallback (Firefox <120)
+              var argStr = (args || []).map(function(a) { return JSON.stringify(a); }).join(',');
+              var code = '(' + codeOrFunction.toString() + ')(' + argStr + ')';
+              browser.tabs.executeScript(tabId, { code: code }).catch((err) => {
+                  // Tab might be closed or restricted
+              });
+          }
       } else {
-          // Fallback for passing string code - V3 doesn't support 'code' string easily without userGesture
-          // We will wrap it in a function if possible or assume the caller has updated.
-          // For this project, I will update the caller (browser.js) to pass a function/args.
           console.warn("Passing code string to executeScript is deprecated in V3 migration.");
       }
   }

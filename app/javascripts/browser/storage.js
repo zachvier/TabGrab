@@ -1,28 +1,24 @@
+var browser = require('webextension-polyfill');
+
 var storage = {
   get: function(key) {
-    return new Promise((resolve) => {
-        chrome.storage.local.get([key], function(result) {
-            resolve(result[key]);
-        });
+    return browser.storage.local.get(key).then(function(result) {
+      return result[key];
     });
   },
 
   set: function(key, value) {
-    return new Promise((resolve) => {
-        if (value) {
-            var obj = {};
-            obj[key] = value;
-            chrome.storage.local.set(obj, resolve);
-        } else {
-            chrome.storage.local.remove(key, resolve);
-        }
-    });
+    if (value) {
+      var obj = {};
+      obj[key] = value;
+      return browser.storage.local.set(obj);
+    } else {
+      return browser.storage.local.remove(key);
+    }
   },
 
   drop: function() {
-    return new Promise((resolve) => {
-        chrome.storage.local.clear(resolve);
-    });
+    return browser.storage.local.clear();
   },
 
   sanitize: async function() {

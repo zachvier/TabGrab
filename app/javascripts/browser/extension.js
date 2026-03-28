@@ -1,6 +1,8 @@
+var browser = require('webextension-polyfill');
+
 var extension = {
   getUrl: function(file) {
-    return chrome.runtime.getURL(file);
+    return browser.runtime.getURL(file);
   }
 }
 

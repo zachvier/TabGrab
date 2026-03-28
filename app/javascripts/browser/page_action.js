@@ -1,12 +1,10 @@
+var browser = require('webextension-polyfill');
+
 var pageAction = {
-  // In V3 'action' replaces 'page_action', and it's always 'shown' by default usually,
-  // but we can still control icon per tab.
   show: function(tabId) {
-    if (chrome.action) {
-        // V3: No explicit 'show' needed usually for "action", 
-    } else if (chrome.pageAction) {
-        chrome.pageAction.show(tabId);
-    }
+    // In MV3, action is always shown by default.
+    // In MV2 Firefox, browserAction is also always shown.
+    // No explicit show needed.
   },
 
   setIcon: function(option) {
@@ -37,8 +35,7 @@ var pageAction = {
         title = "Zendesk TabGrab (Disabled)";
     }
 
-    // For V3 action.setIcon
-    var actionAPI = chrome.action || chrome.pageAction;
+    var actionAPI = browser.action || browser.browserAction;
     if (!actionAPI) return;
 
     // Set global default state
@@ -50,14 +47,14 @@ var pageAction = {
     } catch (e) {}
 
     // Update ALL currently open tabs to reflect the new setting
-    chrome.tabs.query({}, function(allTabs) {
+    browser.tabs.query({}).then(function(allTabs) {
       allTabs.forEach(function(tab) {
         try {
             if (actionAPI.setIcon) actionAPI.setIcon({ tabId: tab.id, path: iconPath });
             if (actionAPI.setBadgeText) actionAPI.setBadgeText({ tabId: tab.id, text: badgeText });
             if (actionAPI.setTitle) actionAPI.setTitle({ tabId: tab.id, title: title });
         } catch (e) {
-            // Tab might be restricted (e.g. chrome://)
+            // Tab might be restricted
         }
       });
     });
