@@ -20,10 +20,10 @@ Zendesk TabGrab keeps your browser clutter-free by monitoring your navigation. I
 ## Installation
 
 ### Chrome
-[![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/fjoifbimocbapgodjieaecipndjciopm?style=for-the-badge&logo=googlechrome&logoColor=white&label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Zendesk%20TabGrab-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/zendesk-quicktab/fjoifbimocbapgodjieaecipndjciopm)
 
 ### Firefox
-Coming soon to Firefox Add-ons.
+[![Firefox Add-ons](https://img.shields.io/badge/Firefox%20Add--ons-Zendesk%20TabGrab-orange?style=for-the-badge&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/zendesk-tabgrab)
 
 ### Manual Install (Development)
 
@@ -66,28 +66,37 @@ npm run dev:firefox
 
 ```
 app/
-  manifest.json              # Chrome (Manifest V3)
-  manifest.firefox.json      # Firefox (Manifest V2)
+  manifest.json              # Chrome (Manifest V3) — matches Chrome Web Store
+  manifest.firefox.json      # Firefox (Manifest V2) — matches Firefox Add-ons
   javascripts/
-    browser/                 # Browser API abstraction layer
-      extension.js
-      i18n.js
-      listeners.js
-      page_action.js
-      storage.js
-      tabs.js
-    modules/                 # Core logic
+    browser/
+      chrome/                # Chrome-specific API layer (chrome.* — as published to Chrome Web Store)
+        extension.js
+        i18n.js
+        listeners.js
+        page_action.js
+        storage.js
+        tabs.js
+      firefox/               # Firefox-specific API layer (webextension-polyfill — as published to Firefox Add-ons)
+        extension.js
+        i18n.js
+        listeners.js
+        page_action.js
+        storage.js
+        tabs.js
+    modules/                 # Shared core logic
       browser.js
       popup.js
       templates.js
       url_match.js
       version.js
-    popup.js                 # Popup entry point
-    tabWatcher.js            # Background script entry point
-    welcome.js               # Welcome page entry point
+    popup.js                 # Popup entry point (shared)
+    tabWatcher.js            # Background script entry point (shared)
+    welcome.chrome.js        # Welcome page — Chrome
+    welcome.firefox.js       # Welcome page — Firefox
 ```
 
-The browser abstraction layer (`app/javascripts/browser/`) uses [webextension-polyfill](https://github.com/nicolo-ribaudo/webextension-polyfill) to provide a single codebase that works across Chrome and Firefox.
+Each browser has its own API layer under `browser/chrome/` and `browser/firefox/`. The webpack build selects the correct folder via a `@browser` alias, keeping shared logic in `modules/` untouched.
 
 ---
 

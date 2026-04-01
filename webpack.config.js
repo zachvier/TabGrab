@@ -10,12 +10,17 @@ module.exports = (env = {}) => {
     entry: {
       popup: './app/javascripts/popup.js',
       tabWatcher: './app/javascripts/tabWatcher.js',
-      welcome: './app/javascripts/welcome.js',
+      welcome: `./app/javascripts/welcome.${target}.js`,
     },
     output: {
       filename: '[name].js',
       path: outputPath,
       clean: true,
+    },
+    resolve: {
+      alias: {
+        '@browser': path.resolve(__dirname, `app/javascripts/browser/${target}`),
+      },
     },
     module: {
       rules: [

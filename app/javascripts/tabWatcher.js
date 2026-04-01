@@ -1,1 +1,1 @@
-require('./browser/listeners.js');
+require('@browser/listeners.js');

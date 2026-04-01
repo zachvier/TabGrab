@@ -2,11 +2,11 @@ var urlMatch = require('./url_match.js');
 
 var browser = {
 
-  tabs:       require('../browser/tabs.js'),
-  pageAction: require('../browser/page_action.js'),
-  i18n:       require('../browser/i18n.js'),
-  storage:    require('../browser/storage.js'),
-  extension:  require('../browser/extension.js'),
+  tabs:       require('@browser/tabs.js'),
+  pageAction: require('@browser/page_action.js'),
+  i18n:       require('@browser/i18n.js'),
+  storage:    require('@browser/storage.js'),
+  extension:  require('@browser/extension.js'),
 
   addPageAction: async function(tabId) {
     var detectionMode = await this.storage.get('urlDetection'),
