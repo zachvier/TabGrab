@@ -11,7 +11,8 @@ Zendesk TabGrab is a browser extension that manages Zendesk agent tabs. It is de
 Zendesk TabGrab does **not** collect, transmit, or store any personal data. Specifically:
 
 - **No analytics or tracking:** The extension contains no analytics, telemetry, or tracking code.
-- **No external network requests:** The extension never communicates with any external server. All processing happens entirely within your browser.
+- **No background network requests:** The extension does not transmit browsing data or communicate with external servers in the background. User-clicked help/source links may open GitHub.
+- **Local-only Zendesk URL handling:** The extension observes Zendesk navigation URLs locally so it can find, focus, and route your existing Zendesk agent tab. Those URLs are not transmitted or retained.
 - **No personal data storage:** The only data stored locally (via browser storage) is your extension preferences (e.g., link detection mode). No browsing history, URLs, or personal information is stored.
 
 ## Permissions

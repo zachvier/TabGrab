@@ -1,6 +1,6 @@
 # Zendesk TabGrab
 
-![Version](https://img.shields.io/badge/Version-2.0.0-blue)
+![Version](https://img.shields.io/badge/Version-2.1.0-blue)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 **Well-behaved browser tabs for Zendesk agents.**
@@ -12,6 +12,7 @@ Zendesk TabGrab keeps your browser clutter-free by monitoring your navigation. I
 * **Automatic Tab Management:** Ensures only one Zendesk Agent tab is open at a time.
 * **Focus Switching:** Instantly snaps focus to your active agent tab when clicking ticket links.
 * **Privacy First:** Runs entirely locally in your browser with no external tracking.
+* **Least-Privilege Routing:** Only handles top-level Zendesk navigations and ignores restricted chat, voice, talk, admin voice, and print routes.
 * **Cross-Browser:** Available for Chrome and Firefox.
 * **Modernized:** Built with Webpack 5 and Vanilla JS.
 
@@ -27,13 +28,15 @@ Zendesk TabGrab keeps your browser clutter-free by monitoring your navigation. I
 
 ### Manual Install (Development)
 
+Requires Node.js `>=20.9.0`.
+
 **Chrome:**
-1. Clone the repository and run `npm install && npm run build`.
+1. Clone the repository and run `npm ci && npm test && npm run build:chrome`.
 2. Go to `chrome://extensions`, enable **Developer Mode**, and click **Load Unpacked**.
 3. Select the `dist/chrome` folder.
 
 **Firefox:**
-1. Clone the repository and run `npm install && npm run build:firefox`.
+1. Clone the repository and run `npm ci && npm test && npm run build:firefox`.
 2. Go to `about:debugging#/runtime/this-firefox` and click **Load Temporary Add-on**.
 3. Select any file inside the `dist/firefox` folder.
 
@@ -47,10 +50,16 @@ git clone https://github.com/zachvier/TabGrab.git
 cd TabGrab
 
 # Install dependencies
-npm install
+npm ci
+
+# Run URL matching and route safety tests
+npm test
+
+# Check for high-severity dependency vulnerabilities
+npm audit --audit-level=high
 
 # Build for Chrome (outputs to dist/chrome)
-npm run build
+npm run build:chrome
 
 # Build for Firefox (outputs to dist/firefox)
 npm run build:firefox
@@ -100,9 +109,46 @@ Each browser has its own API layer under `browser/chrome/` and `browser/firefox/
 
 ---
 
+## Pre-Ship Checklist
+
+Run these before uploading a store package:
+
+```bash
+npm ci
+npm test
+npm audit --audit-level=high
+npm run build:chrome
+npm run build:firefox
+```
+
+Then manually load and test both builds:
+
+* Chrome: load `dist/chrome` from `chrome://extensions` with Developer Mode enabled.
+* Firefox: load `dist/firefox/manifest.json` from `about:debugging#/runtime/this-firefox`.
+* Confirm Zendesk ticket links focus and route the existing agent tab, then close the duplicate tab.
+* Confirm popup modes work: `All agent links`, `Just ticket links`, and `No links`.
+* Confirm restricted routes are not intercepted: `/agent/chat`, `/agent/voice`, `/agent/talk`, `/agent/admin/voice`, and `/tickets/<id>/print`.
+* Confirm the same behavior on macOS and Windows before store submission.
+
+---
+
+## Release Notes
+
+### 2.1.0
+
+* Hardened Zendesk URL parsing to reject lookalike domains and malformed URLs.
+* Limited routing behavior to top-level navigation events and deduplicated repeated navigation callbacks.
+* Narrowed extension-to-page messaging to the current Zendesk origin instead of a wildcard target.
+* Removed all-tab scans used only for toolbar icon updates.
+* Added route safety tests and an `npm test` pre-ship step.
+* Updated build dependencies and dependency audit status.
+* Clarified privacy disclosure for local-only Zendesk URL handling.
+
+---
+
 ## Privacy
 
-Zendesk TabGrab does not collect, transmit, or store any personal data. All processing happens locally in your browser. The extension only accesses Zendesk URLs (`*.zendesk.com`) to manage tab navigation. See [PRIVACY.md](PRIVACY.md) for details.
+Zendesk TabGrab does not collect, transmit, or store personal data. All processing happens locally in your browser. The extension observes Zendesk URLs (`*.zendesk.com`) only to find, focus, and route your existing Zendesk agent tab. See [PRIVACY.md](PRIVACY.md) for details.
 
 ---
 

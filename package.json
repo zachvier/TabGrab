@@ -1,14 +1,17 @@
 {
   "name": "zendesk-tabgrab",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Zendesk TabGrab Extension",
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "build": "webpack --mode production",
     "build:chrome": "webpack --mode production --env target=chrome",
     "build:firefox": "webpack --mode production --env target=firefox",
     "dev": "webpack --mode development --watch",
     "dev:firefox": "webpack --mode development --watch --env target=firefox",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
@@ -23,7 +26,7 @@
     "webextension-polyfill": "^0.12.0"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^11.0.0",
+    "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^6.7.3",
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.3",

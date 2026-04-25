@@ -49,18 +49,6 @@ var pageAction = {
         if (actionAPI.setTitle) actionAPI.setTitle({ title: title });
     } catch (e) {}
 
-    // Update ALL currently open tabs to reflect the new setting
-    chrome.tabs.query({}, function(allTabs) {
-      allTabs.forEach(function(tab) {
-        try {
-            if (actionAPI.setIcon) actionAPI.setIcon({ tabId: tab.id, path: iconPath });
-            if (actionAPI.setBadgeText) actionAPI.setBadgeText({ tabId: tab.id, text: badgeText });
-            if (actionAPI.setTitle) actionAPI.setTitle({ tabId: tab.id, title: title });
-        } catch (e) {
-            // Tab might be restricted (e.g. chrome://)
-        }
-      });
-    });
   }
 };
 

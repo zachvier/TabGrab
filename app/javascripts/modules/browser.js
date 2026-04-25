@@ -7,6 +7,8 @@ var browser = {
   i18n:       require('@browser/i18n.js'),
   storage:    require('@browser/storage.js'),
   extension:  require('@browser/extension.js'),
+  navigationDedupeWindow: 1000,
+  recentNavigations: {},
 
   addPageAction: async function(tabId) {
     var detectionMode = await this.storage.get('urlDetection'),
@@ -17,13 +19,44 @@ var browser = {
   },
 
   didNavigate: async function(navDetails) {
+    if (!this.shouldHandleNavigation(navDetails)) {
+      return;
+    }
+
     var tabDetails       = { id: navDetails.tabId, url: navDetails.url },
         detectionMode    = await this.storage.get('urlDetection'),
         zdUrlMatches     = urlMatch.extractMatches(navDetails.url, detectionMode);
 
     if ((detectionMode !== 'noUrls') && zdUrlMatches) {
       tabDetails.routeDetails = zdUrlMatches;
-      browser.openRouteInZendesk(tabDetails);
+      this.openRouteInZendesk(tabDetails);
+    }
+  },
+
+  shouldHandleNavigation: function(navDetails) {
+    if (!navDetails || navDetails.frameId !== 0 || !navDetails.url) {
+      return false;
+    }
+
+    var now = Date.now(),
+        key = navDetails.tabId + '|' + navDetails.url,
+        lastHandledAt = this.recentNavigations[key];
+
+    if (lastHandledAt && now - lastHandledAt < this.navigationDedupeWindow) {
+      return false;
+    }
+
+    this.recentNavigations[key] = now;
+    this.pruneRecentNavigations(now);
+
+    return true;
+  },
+
+  pruneRecentNavigations: function(now) {
+    for (var key in this.recentNavigations) {
+      if (now - this.recentNavigations[key] > this.navigationDedupeWindow) {
+        delete this.recentNavigations[key];
+      }
     }
   },
 
@@ -64,7 +97,7 @@ var browser = {
       for (var i = 0, len = openTabs.length; i < len; i++) {
         lotusTab = openTabs[i];
 
-        if (lotusTab.id !== tab.id && lotusTab.url.match(urlMatch.LOTUS_ROUTE)) {
+        if (lotusTab.id !== tab.id && urlMatch.extractMatches(lotusTab.url, 'allUrls')) {
           self.updateLotusRoute(lotusTab.id, route);
           self.tabs.focus(lotusTab);
           self.tabs.remove(tab.id);
@@ -76,11 +109,15 @@ var browser = {
   },
 
   updateLotusRoute: function(lotusTabId, route) {
+    if (!urlMatch.isSafeRoute(route)) {
+      return;
+    }
+
     var message = { "target": "route", "memo": { "hash": route } };
     
     // Updated for V3: Pass function and args
     this.tabs.executeScript(lotusTabId, function(msgJson) {
-        window.postMessage(msgJson, '*');
+        window.postMessage(msgJson, window.location.origin);
     }, [JSON.stringify(message)]);
   }
 
