@@ -35,6 +35,12 @@ test('does not match restricted Zendesk routes', () => {
   assert.equal(urlMatch.extractMatches('https://acme.zendesk.com/agent/talk', 'allUrls'), null);
   assert.equal(urlMatch.extractMatches('https://acme.zendesk.com/agent/admin/voice', 'allUrls'), null);
   assert.equal(urlMatch.extractMatches('https://acme.zendesk.com/tickets/123/print', 'allUrls'), null);
+
+  // "View original email" comment popups must not be grabbed, in either
+  // detection mode and in both the popup and agent-rewritten URL forms.
+  assert.equal(urlMatch.extractMatches('https://acme.zendesk.com/tickets/123/comments/456/original_email', 'allUrls'), null);
+  assert.equal(urlMatch.extractMatches('https://acme.zendesk.com/tickets/123/comments/456/original_email', 'ticketUrls'), null);
+  assert.equal(urlMatch.extractMatches('https://acme.zendesk.com/agent/tickets/123/comments/456/original_email', 'allUrls'), null);
 });
 
 test('rejects non-Zendesk lookalike hosts', () => {

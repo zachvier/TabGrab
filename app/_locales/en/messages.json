@@ -34,88 +34,8 @@
     "description": ""
   },
 
-  "txt_popup_options_help_welcome": {
-    "message": "See welcome screen again",
-    "description": ""
-  },
-
   "txt_popup_options_help_feedback": {
     "message": "Give beta feedback",
-    "description": ""
-  },
-
-  "txt_welcome_header_thank_you": {
-    "message": "Thanks for installing Zendesk TabGrab",
-    "description": ""
-  },
-
-  "txt_welcome_header_main": {
-    "message": "Well behaved browser tabs for Zendesk agents",
-    "description": ""
-  },
-
-    "txt_welcome_header_hook": {
-
-      "message": "Click a Zendesk agent link from anywhere, and Zendesk TabGrab will automatically find your existing Zendesk tab and open the link there instead.",
-
-      "description": ""
-
-    },
-
-    "txt_welcome_header_what_do": {
-
-      "message": "How does it work?",
-
-      "description": ""
-
-    },
-
-    "txt_welcome_body_what_do": {
-
-      "message": "If you already have Zendesk open, clicking a ticket or user link will focus that existing tab instead of opening a clutter of new ones.",
-
-      "description": ""
-
-    },
-
-    "txt_welcome_header_new_browser_tab": {
-
-      "message": "Can I still open links in a new browser tab?",
-
-      "description": ""
-
-    },
-
-    "txt_welcome_body_new_browser_tab": {
-
-      "message": "Yes. You can temporarily disable Zendesk TabGrab via the extension popup. <strong>Tip:</strong> Pin Zendesk TabGrab to your browser toolbar for easy access. The icon shows your status: <img src='./images/icons/icon38-enabled.png' /> (On) or <img src='./images/icons/icon38-disabled.png' /> (Off).",
-
-      "description": ""
-
-    },
-
-  "txt_welcome_header_lose_work": {
-    "message": "Would that cause me to lose work?",
-    "description": ""
-  },
-
-  "txt_welcome_body_lose_work": {
-    "message": "No. The extension talks directly to the interface, telling it where you would like to navigate. The interface will keep all your work safe.",
-    "description": ""
-  },
-
-  "txt_welcome_header_what_links": {
-    "message": "What links does this work for?",
-    "description": ""
-  },
-
-  "txt_welcome_body_what_links": {
-    "message": "Any agent link, which is any link with /agent after the domain. Tickets, users, views and even admin pages.",
-    "description": ""
-  },
-
-  "txt_welcome_button_read_docs": {
-    "message": "Read the full documentation",
     "description": ""
   }
 }

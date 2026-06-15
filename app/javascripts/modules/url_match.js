@@ -126,7 +126,8 @@ var urlMatch = {
         path       = zendeskDetails.pathname;
 
     return /^\/?(chat|voice|talk|admin\/voice)(\/|$)/.test(agentRoute || '') ||
-      /^\/tickets\/\d+\/print(\/|$)/.test(path);
+      /^\/tickets\/\d+\/print(\/|$)/.test(path) ||
+      /^\/(agent\/)?tickets\/\d+\/comments\/\d+\/original_email(\/|$)/.test(path);
   }
 
 };

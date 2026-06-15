@@ -1,6 +1,6 @@
 # Zendesk TabGrab
 
-![Version](https://img.shields.io/badge/Version-2.1.0-blue)
+![Version](https://img.shields.io/badge/Version-2.1.1-blue)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 **Well-behaved browser tabs for Zendesk agents.**
@@ -101,8 +101,6 @@ app/
       version.js
     popup.js                 # Popup entry point (shared)
     tabWatcher.js            # Background script entry point (shared)
-    welcome.chrome.js        # Welcome page — Chrome
-    welcome.firefox.js       # Welcome page — Firefox
 ```
 
 Each browser has its own API layer under `browser/chrome/` and `browser/firefox/`. The webpack build selects the correct folder via a `@browser` alias, keeping shared logic in `modules/` untouched.
@@ -133,6 +131,11 @@ Then manually load and test both builds:
 ---
 
 ## Release Notes
+
+### 2.1.1
+
+* Ignored Zendesk "View original email" comment popups (`/tickets/<id>/comments/<id>/original_email`) so they open in their own window instead of being grabbed into the agent tab.
+* Removed the first-run welcome page and unused packaged images for a smaller download.
 
 ### 2.1.0
 

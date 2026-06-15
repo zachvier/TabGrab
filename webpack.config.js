@@ -10,7 +10,6 @@ module.exports = (env = {}) => {
     entry: {
       popup: './app/javascripts/popup.js',
       tabWatcher: './app/javascripts/tabWatcher.js',
-      welcome: `./app/javascripts/welcome.${target}.js`,
     },
     output: {
       filename: '[name].js',
@@ -43,7 +42,6 @@ module.exports = (env = {}) => {
         patterns: [
           { from: `app/${manifestFile}`, to: "manifest.json" },
           { from: "app/popup.html", to: "popup.html" },
-          { from: "app/welcome.html", to: "welcome.html" },
           { from: "app/images", to: "images" },
           { from: "app/_locales", to: "_locales" },
         ],
