@@ -30,23 +30,14 @@ var tabs = {
 
   executeScript: function(tabId, codeOrFunction, args) {
       if (typeof codeOrFunction === 'function') {
-          if (browser.scripting) {
-              // MV3 (Chrome, Firefox 120+)
-              browser.scripting.executeScript({
-                  target: { tabId: tabId },
-                  func: codeOrFunction,
-                  args: args || []
-              }).catch((err) => {
-                  // Tab might be closed or restricted
-              });
-          } else {
-              // MV2 fallback (Firefox <120)
-              var argStr = (args || []).map(function(a) { return JSON.stringify(a); }).join(',');
-              var code = '(' + codeOrFunction.toString() + ')(' + argStr + ')';
-              browser.tabs.executeScript(tabId, { code: code }).catch((err) => {
-                  // Tab might be closed or restricted
-              });
-          }
+          // Requires the "scripting" permission; Firefox supports this API in MV2
+          browser.scripting.executeScript({
+              target: { tabId: tabId },
+              func: codeOrFunction,
+              args: args || []
+          }).catch((err) => {
+              // Tab might be closed or restricted
+          });
       } else {
           console.warn("Passing code string to executeScript is deprecated in V3 migration.");
       }

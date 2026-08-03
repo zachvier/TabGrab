@@ -27,8 +27,8 @@ var pageAction = {
             "19": "images/icons/icon19-disabled.png",
             "32": "images/icons/icon32-disabled.png",
             "38": "images/icons/icon38-disabled.png",
-            "48": "images/icons/icon38-disabled.png",
-            "128": "images/icons/icon38-disabled.png"
+            "48": "images/icons/icon48-disabled.png",
+            "128": "images/icons/icon128-disabled.png"
         };
         badgeText = "OFF";
         badgeColor = "#999999";

@@ -64,18 +64,14 @@ var popup = {
     }
   },
 
+  // The popup stays open after a selection; clicking away or hitting
+  // Esc dismisses it (the browser's native popup behavior).
   disable: function(disableFor) {
     browser.pageAction.setIcon('disabled');
-    setTimeout(() => { this.closePopup(); }, 150); // Small delay to show selection
   },
 
   enable: function() {
     browser.pageAction.setIcon('enabled');
-    setTimeout(() => { this.closePopup(); }, 150); // Small delay to show selection
-  },
-
-  closePopup: function() {
-    window.close();
   }
 };
 
