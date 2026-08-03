@@ -1,158 +1,148 @@
-$bg-color: #1f2b36; // Zendesk-ish Dark
-$text-color: #ecf0f1;
-$text-muted: #95a5a6;
-$hover-bg: #2c3e50;
-$border-color: #34495e;
-$accent-color: #3498db; // Blue
+// Icon-matched theme: deep navy backdrop, white browser-window cards with
+// bold ink outlines, teal "active tab" highlight, traffic-light dots.
+
+$navy: #101c38;      // icon background
+$ink: #16203c;       // icon outline / text on white
+$paper: #fbfcfe;     // icon window face
+$teal: #63e2c0;      // icon active tab
+$muted-ink: #8089a2; // secondary text on white
+$tab-gray: #d9dce2;  // icon inactive tabs (hover)
+$dot-red: #f45952;
+$dot-yellow: #fdd23a;
+$dot-green: #43c644;
+
+$mono: "SFMono-Regular", "Cascadia Code", "Roboto Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; // Modern font stack
-  font-size: 13px;
-  color: $text-color;
-  background-color: $bg-color;
+  font: 400 13px/1.5 $mono;
+  color: $paper;
+  background: $navy;
   margin: 0;
   padding: 0;
-  width: 220px;
+  width: 280px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  padding: 4px 12px 12px;
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 2px solid $teal;
+  outline-offset: -2px;
 }
 
 h1 {
-  background: none; // Remove icon
-  font-size: 16px;
-  font-weight: 600;
-  padding: 15px 0 15px 0; // Removed left padding
-  margin: 0 15px;
-  color: $text-color;
-}
-
-h1.enabled {
-  background-image: none; // Remove icon
-}
-
-h2 {
-  border-bottom: 1px solid $border-color;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  color: $text-muted;
-  margin: 0 15px 5px;
-  padding-bottom: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  color: $paper;
+  margin: 0;
+  padding: 10px 4px 12px;
 }
 
 #app-status {
   display: none; // Hide this empty/useless status for now
 }
 
-#settings-url-types {
-  margin-bottom: 15px;
+// Each section is a "browser window" card, like the icon
+#settings-url-types,
+#settings-help {
+  background: $paper;
+  border: 2px solid $ink;
+  border-radius: 12px;
+  overflow: hidden;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: lowercase;
+    color: $ink;
+    margin: 0;
+    padding: 10px 12px;
+    border-bottom: 2px solid $ink;
+  }
 
   ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 6px;
   }
 
   li {
-    padding: 0 15px;
     margin: 0;
-    transition: background-color 0.2s;
-  }
-
-  li:hover {
-    background-color: $hover-bg;
+    padding: 0;
   }
 
   li a {
-    padding: 8px 0 8px 24px;
     display: block;
+    padding: 7px 10px;
+    border-radius: 8px;
+    color: $ink;
+    font-weight: 500;
     text-decoration: none;
-    color: $text-color;
-    position: relative;
-
-    // Radio Button Outer Circle
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 16px;
-      height: 16px;
-      border: 2px solid $text-muted;
-      border-radius: 50%;
-      box-sizing: border-box;
-      transition: border-color 0.2s;
-    }
+    transition: background 120ms;
   }
 
   li a:hover,
   li a:focus {
-    color: #fff;
+    background: $tab-gray;
     outline: 0;
+  }
+}
 
-    &::before {
-      border-color: lighten($accent-color, 10%);
-    }
+#settings-url-types {
+  margin-bottom: 12px;
+
+  // Traffic-light dots in the window header
+  h2::before {
+    content: "";
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $dot-red;
+    box-shadow: 13px 0 0 $dot-yellow, 26px 0 0 $dot-green;
+    margin-right: 36px;
   }
 
-  li a.disabled {
-    color: $text-muted;
-    opacity: 0.7;
+  li a::before {
+    content: "[ ] ";
+    color: $muted-ink;
+    white-space: pre;
   }
 
+  // Selected option = the teal active tab
   li a.enabled {
-    font-weight: bold;
-    background: none;
+    background: $teal;
+    font-weight: 700;
 
-    // Checked State Outer
     &::before {
-      border-color: $accent-color;
+      content: "[x] ";
+      color: $ink;
     }
 
-    // Checked State Inner Dot
-    &::after {
-      content: '';
-      position: absolute;
-      left: 4px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 8px;
-      height: 8px;
-      background-color: $accent-color;
-      border-radius: 50%;
+    &:hover,
+    &:focus {
+      background: $teal;
     }
   }
 }
 
 #settings-help {
-  padding-bottom: 10px;
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  li a::after {
+    content: " ↗";
+    color: $muted-ink;
   }
+}
 
-  li {
-    padding: 0 15px;
-    margin: 0;
-  }
-
-  li:hover {
-    background-color: $hover-bg;
-  }
-
-  li a {
-    padding: 8px 0;
-    display: block;
-    text-decoration: none;
-    color: $text-color;
-  }
-
-  li a:hover,
-  li a:focus {
-    color: #fff;
-    outline: 0;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
   }
 }
