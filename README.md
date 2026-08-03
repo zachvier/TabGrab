@@ -46,7 +46,7 @@ Requires Node.js `>=20.9.0`.
 
 ```bash
 # Clone the repo
-git clone https://github.com/zachvier/TabGrab.git
+git clone https://github.com/zachvivier/TabGrab.git
 cd TabGrab
 
 # Install dependencies
@@ -164,4 +164,4 @@ Zendesk TabGrab does not collect, transmit, or store personal data. All processi
 
 ---
 
-**Maintainer**: [zachvier](https://github.com/zachvier) | Distributed under the Apache License 2.0.
+**Maintainer**: [zach](https://github.com/zachvivier) | Distributed under the Apache License 2.0.
