@@ -1,6 +1,6 @@
 # Zendesk TabGrab
 
-![Version](https://img.shields.io/badge/Version-2.1.1-blue)
+![Version](https://img.shields.io/badge/Version-2.2.0-blue)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 **Well-behaved browser tabs for Zendesk agents.**
@@ -131,6 +131,15 @@ Then manually load and test both builds:
 ---
 
 ## Release Notes
+
+### 2.2.0
+
+* Dropped the broad `tabs` permission — tab handling now relies solely on the existing `*.zendesk.com` host permission, removing the "Read your browsing history" install warning.
+* New toolbar icons with distinct enabled/disabled states, now with real 48px and 128px disabled variants.
+* Redesigned the popup to match the new icon: navy backdrop, browser-window cards, teal highlight for the active mode.
+* The popup now stays open after changing modes; click away or press Esc to dismiss it.
+* Firefox: script injection now uses the `scripting` API (new `scripting` permission) instead of rebuilding code strings for `tabs.executeScript`.
+* Fixed malformed popup markup (unclosed lists) and refreshed build dependencies to clear all `npm audit` findings.
 
 ### 2.1.1
 
